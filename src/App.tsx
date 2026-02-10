@@ -7,14 +7,19 @@ import {runAction} from "./service/api.ts";
 import {ApiActionTypeEnum} from "./enums/apiActionTypeEnum.ts";
 import {ApiCallMethodEnum} from "./enums/apiCallMethodEnum.ts";
 import "./App.css"
+import {FullScreenLoader, OverlayLoader} from "./components/Loader.tsx";
+import {sleep} from "./utils/delayUtility.ts";
 
 export default function App() {
     const [schema, setSchema] = useState<UiSchemaResponse["schema"] | null>(null);
     const [dataStore, setDataStore] = useState<Record<string, unknown>>({});
+    const [loading, setLoading] = useState(false);
 
     // --------- Initial fetch ---------
     useEffect(() => {
         const fetchInitial = async () => {
+            setLoading(true);
+            await sleep(2000);
             try {
                 // fetchPage could be used here if you prefer
                 const result: BackendResponse = await runAction({
@@ -28,6 +33,8 @@ export default function App() {
                 }
             } catch (err) {
                 console.error(err);
+            } finally {
+                setLoading(false);
             }
         };
         fetchInitial();
@@ -36,6 +43,11 @@ export default function App() {
     // --------- Action handler ---------
     const handleAction = async (action?: ApiAction, payload?: Record<string, unknown>) => {
         if (!action) return;
+
+        if (!action || loading) return;
+
+        setLoading(true);
+        await sleep(2000);
 
         try {
             const result: BackendResponse = await runAction(action, payload);
@@ -50,14 +62,20 @@ export default function App() {
             }
         } catch (err) {
             console.error("Action failed:", err);
+        } finally {
+            setLoading(false);
         }
     };
 
     // --------- Render ---------
-    if (!schema) return <div>Loading...</div>;
+    if (!schema) {
+        return <FullScreenLoader />;
+    }
 
     return (
-        <div>
+        <div className="app-container">
+            {loading && <OverlayLoader />}
+
             {schema.components.map((node: SchemaNode, index: number) =>
                 renderNode(node, index, handleAction, dataStore)
             )}
