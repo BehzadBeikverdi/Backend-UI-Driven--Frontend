@@ -3,7 +3,7 @@
 A **Backend‑Driven UI** proof-of-concept/full architecture starter where UI structure and behavior can be controlled from your backend.  
 This repository currently contains a basic **React + TypeScript + Vite** starter template — an ideal foundation for building a frontend that dynamically renders UI delivered from a Spring Boot backend (or any other backend).
 
-Backend‑Driven UI (BDUI) is an architectural approach where the *server* not only provides data, but also defines *how the interface should be constructed and behave*. The frontend acts as a dynamic renderer, interpreting JSON or configuration sent from the backend to build screens at runtime. This allows UI changes without redeploying the frontend. ([habr.com](https://habr.com/ru/companies/ozontech/articles/661941/?utm_source=chatgpt.com))
+Backend‑Driven UI (BDUI) is an architectural approach where the *server* not only provides data, but also defines *how the interface should be constructed and behave*. The frontend acts as a dynamic renderer, interpreting JSON or configuration sent from the backend to build screens at runtime. This allows UI changes without redeploying the frontend.
 
 ---
 
@@ -11,8 +11,8 @@ Backend‑Driven UI (BDUI) is an architectural approach where the *server* not o
 
 With Backend‑Driven UI you can:
 
-- **Update UI without redeploying frontend clients** — ideal for experiments, A/B tests, or CMS-like features. ([habr.com](https://habr.com/ru/articles/753718/?utm_source=chatgpt.com))
-- Support multiple platforms (web, mobile) with the same backend definitions. ([habr.com](https://habr.com/ru/companies/ozontech/articles/661941/?utm_source=chatgpt.com))
+- **Update UI without redeploying frontend clients** — ideal for experiments, A/B tests, or CMS-like features.
+- Support multiple platforms (web, mobile) with the same backend definitions.
 - Reduce coupling between backend logic and static UI code.
 
 ---
