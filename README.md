@@ -1,73 +1,70 @@
-# React + TypeScript + Vite
+# 🛠 Backend‑UI‑Driven
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **Backend‑Driven UI** proof-of-concept/full architecture starter where UI structure and behavior can be controlled from your backend.  
+This repository currently contains a basic **React + TypeScript + Vite** starter template — an ideal foundation for building a frontend that dynamically renders UI delivered from a Spring Boot backend (or any other backend).
 
-Currently, two official plugins are available:
+Backend‑Driven UI (BDUI) is an architectural approach where the *server* not only provides data, but also defines *how the interface should be constructed and behave*. The frontend acts as a dynamic renderer, interpreting JSON or configuration sent from the backend to build screens at runtime. This allows UI changes without redeploying the frontend. ([habr.com](https://habr.com/ru/companies/ozontech/articles/661941/?utm_source=chatgpt.com))
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🧠 Why Backend‑Driven UI?
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+With Backend‑Driven UI you can:
 
-## Expanding the ESLint configuration
+- **Update UI without redeploying frontend clients** — ideal for experiments, A/B tests, or CMS-like features. ([habr.com](https://habr.com/ru/articles/753718/?utm_source=chatgpt.com))
+- Support multiple platforms (web, mobile) with the same backend definitions. ([habr.com](https://habr.com/ru/companies/ozontech/articles/661941/?utm_source=chatgpt.com))
+- Reduce coupling between backend logic and static UI code.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 Features (Planned / Ideal)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+💡 *Note: The current repo is a starter template — these are goals for your Backend‑Driven UI system.*
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- ✔️ **React + TypeScript + Vite** starter
+- ✔️ Dynamic screen rendering from JSON schema
+- ✔️ Backend API integration for UI configuration
+- ✔️ Component mapping & renderer layer
+- ✔️ Sample form, list, and navigation definitions
+- ✔️ Hooks for data + UI control
+
+---
+
+## 📁 Project Structure
+
+```
+├── public/
+│ └── index.html
+├── src/
+│ ├── App.tsx
+│ └── main.tsx
+├── .gitignore
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+└── README.md
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+This is the base for a React application. You’ll extend `src/` with logic that takes backend UI definitions (e.g., JSON) and turns them into React components.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🧱 Tech Stack
+
+| Purpose           | Technology                   |
+|------------------|------------------------------|
+| Frontend Framework | React                        |
+| Language           | TypeScript                  |
+| Bundler            | Vite                        |
+| UI Rendering       | Dynamic JSON-to-component system |
+| Backend (suggested) | Spring Boot or REST API      |
+
+---
+
+## 🛠 Getting Started
+
+1. **Clone the repo**
+
+```bash
+git clone https://github.com/BehzadBeikverdi/Backend--UI-Driven.git
+cd Backend--UI-Driven
